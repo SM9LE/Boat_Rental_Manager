@@ -15,7 +15,7 @@ namespace Boat_Rental.Manager
             if (Context.SaveChanges() > 0)
                 return boattype;
             return null;
-        }
+        }   
         public bool DeleteABoatType(Boattype boattype)
         {
             if (boattype != null)

@@ -45,6 +45,7 @@ namespace Boat_Rental
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.memberList = new System.Windows.Forms.ListBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.list_member = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -203,12 +204,27 @@ namespace Boat_Rental
             this.comboBox1.TabIndex = 50;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // list_member
+            // 
+            this.list_member.FullRowSelect = true;
+            this.list_member.GridLines = true;
+            this.list_member.HideSelection = false;
+            this.list_member.Location = new System.Drawing.Point(531, 153);
+            this.list_member.Name = "list_member";
+            this.list_member.Size = new System.Drawing.Size(591, 368);
+            this.list_member.TabIndex = 51;
+            this.list_member.UseCompatibleStateImageBehavior = false;
+            this.list_member.View = System.Windows.Forms.View.Details;
+            this.list_member.SelectedIndexChanged += new System.EventHandler(this.list_member_SelectedIndexChanged);
+            this.list_member.DoubleClick += new System.EventHandler(this.list_member_DoubleClick);
+            // 
             // FormMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(1134, 555);
+            this.Controls.Add(this.list_member);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.memberList);
             this.Controls.Add(this.pictureBox2);
@@ -226,6 +242,7 @@ namespace Boat_Rental
             this.Controls.Add(this.label4);
             this.Name = "FormMember";
             this.Text = "FormMember";
+            this.Load += new System.EventHandler(this.FormMember_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -249,5 +266,6 @@ namespace Boat_Rental
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.ListBox memberList;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ListView list_member;
     }
 }

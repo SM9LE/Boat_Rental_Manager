@@ -47,5 +47,11 @@ namespace Boat_Rental.Manager
 
         public List<Member> GetMember()
             => Context.Members.ToList();
+
+        public List<Member> ListMember()
+        {
+            var list = Context.Members.AsQueryable();
+            return list.ToList();
+        }
     }
 }
