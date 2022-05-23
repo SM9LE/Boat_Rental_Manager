@@ -20,7 +20,7 @@ namespace Boat_Rental
         {
             InitializeComponent();
             MemberManager = new MemberManager();
-            LoadChallenge();
+            //LoadChallenge();
             comboBox1.SelectedIndex = 0;
         }
         private void button_Add_Click(object sender, EventArgs e)
@@ -44,10 +44,10 @@ namespace Boat_Rental
                 Member member = new Member(login.Text, password.Text);
                 MemberManager.AddAMember(member);
                 MessageBox.Show("Administrateur ajouté !");
-                LoadChallenge();
+               // LoadChallenge();
             }
         }
-        private void LoadChallenge()
+      /*  private void LoadChallenge()
         {
             memberList.Items.Clear();
 
@@ -63,7 +63,7 @@ namespace Boat_Rental
                     memberList.Items.AddRange(MemberManager.GetMember().Select(member => member.IdMember.ToString()).ToArray());
                     break;
             }
-        }
+        }*/
 
         private Member SelectedMember;
 
@@ -121,7 +121,7 @@ namespace Boat_Rental
                     login.Text = "";
                     password.Text = "";
                     confirmPassword.Text = "";
-                    LoadChallenge();
+                    //LoadChallenge();
                     MessageBox.Show("Administrateur modifié !");
                 }
             }
@@ -135,7 +135,7 @@ namespace Boat_Rental
                 login.Text = "";
                 password.Text = "";
                 confirmPassword.Text = "";
-                LoadChallenge();
+               // LoadChallenge();
                 MessageBox.Show("Administrateur supprimé !");
             }
         }
@@ -145,13 +145,13 @@ namespace Boat_Rental
             login.Text = "";
             password.Text = "";
             confirmPassword.Text = "";
-            LoadChallenge();
+            //LoadChallenge();
         }
 
         // Lorsque l'utilisateur change le type de recherche
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadChallenge();
+           // LoadChallenge();
         }
 
         private void list_member_SelectedIndexChanged(object sender, EventArgs e)

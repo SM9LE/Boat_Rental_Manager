@@ -4,11 +4,34 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Timers;
 
 namespace Boat_Rental.Manager
 {
     public class BoatManager : DataManager
     {
+        public Timer timer;
+
+
+        public void InitializeTimer()
+        {
+
+            timer = new Timer(60000);
+            timer.Elapsed += CheckBoatRent;
+            timer.Start();
+        }
+
+        private void CheckBoatRent(object sender, ElapsedEventArgs e)
+        {
+            foreach(var commandBoat in ListBoat().SelectMany(x => x.Commands))
+            {
+                if(commandBoat.DateEndCommand <= DateTime.Now)
+                    commandBoat.IdBoatNavigation.IsRentedBoat = false;
+
+                Context.Update(commandBoat.IdBoatNavigation);
+            }
+        }
+
         public Boat AddABoat(Boat boat)
         {
             Context.Boats.Add(boat);
@@ -41,12 +64,18 @@ namespace Boat_Rental.Manager
         {
             return Context.Boats.Find(id);
         }
-      /*  public Boat FindABoatByRent(bool rent)
-        {
-            Context.Boats.Where(boat => boat.IsRentedBoat == rent);
-        }
-      */
+        /*  public Boat FindABoatByRent(bool rent)
+          {
+              Context.Boats.Where(boat => boat.IsRentedBoat == rent);
+          }
+        */
         public Boat FindABoatByLicense(string license)
             => Context.Boats.FirstOrDefault(boat => boat.LicenseBoat == license);
+
+        public List<Boat> ListBoat()
+        {
+            var list = Context.Boats.AsQueryable();
+            return list.ToList();
+        }
     }
 }

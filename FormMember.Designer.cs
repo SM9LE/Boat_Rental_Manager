@@ -209,7 +209,7 @@ namespace Boat_Rental
             this.list_member.FullRowSelect = true;
             this.list_member.GridLines = true;
             this.list_member.HideSelection = false;
-            this.list_member.Location = new System.Drawing.Point(531, 153);
+            this.list_member.Location = new System.Drawing.Point(531, 115);
             this.list_member.Name = "list_member";
             this.list_member.Size = new System.Drawing.Size(591, 368);
             this.list_member.TabIndex = 51;

@@ -46,6 +46,6 @@ namespace Boat_Rental.Manager
             => Context.Customers.FirstOrDefault(customer => customer.MailCustomer == mail);
 
         public List<Customer> GetCustomers()
-    => Context.Customers.ToList();
+            => Context.Customers.ToList();
     }
 }

@@ -31,8 +31,9 @@ namespace Boat_Rental
         private void button_BoatStock_Click(object sender, EventArgs e)
         {
             AddBoat = true;
-            FormMember member = new FormMember();
-            member.ShowDialog();
+            FormBoat boatStock = new FormBoat();
+            boatStock.ShowDialog();
+            
         }
 
         private void button_AddConsumer_Click(object sender, EventArgs e)

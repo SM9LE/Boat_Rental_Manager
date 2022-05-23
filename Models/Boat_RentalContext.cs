@@ -164,11 +164,6 @@ namespace Boat_Rental.Models
                     .HasColumnType("int(11)")
                     .HasColumnName("Id_Customer");
 
-                entity.Property(e => e.AdressCustomer)
-                    .IsRequired()
-                    .HasMaxLength(100)
-                    .HasColumnName("Adress_Customer");
-
                 entity.Property(e => e.AgeCustomer)
                     .HasColumnType("datetime")
                     .HasColumnName("Age_Customer");

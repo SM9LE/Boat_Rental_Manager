@@ -44,5 +44,10 @@ namespace Boat_Rental.Manager
 
         public Command FindACommandByBoatID(int idboat)
             => Context.Commands.FirstOrDefault(command => command.IdBoat == idboat);
+        public List<Command> ListCommands()
+        {
+            var list = Context.Commands.AsQueryable();
+            return list.ToList();
+        }
     }
 }

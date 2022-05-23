@@ -14,6 +14,7 @@ namespace Boat_Rental
     public partial class FormCustomer : Form
     {
         CustomerManager CustomerManager;
+        Customer customer;
         public FormCustomer()
         {
             InitializeComponent();
@@ -26,9 +27,7 @@ namespace Boat_Rental
             customerList.Items.Clear();
             firstName.Text = "";
             lastName.Text = "";
-            birthDate.Text = "";
             mailAdress.Text = "";
-            Adress.Text = "";
             boatLicense.Text = "";
             hasRented.Text = "";
 
@@ -49,17 +48,13 @@ namespace Boat_Rental
         {
             Customer verify = CustomerManager.FindACustomerByMail(mailAdress.Text);
 
-            if (string.IsNullOrEmpty(firstName.Text) || string.IsNullOrEmpty(lastName.Text) || string.IsNullOrEmpty(birthDate.Text) || string.IsNullOrEmpty(mailAdress.Text) || string.IsNullOrEmpty(Adress.Text) || string.IsNullOrEmpty(boatLicense.Text) || string.IsNullOrEmpty(hasRented.Text))
+            if (string.IsNullOrEmpty(firstName.Text) || string.IsNullOrEmpty(lastName.Text) || string.IsNullOrEmpty(mailAdress.Text) || string.IsNullOrEmpty(boatLicense.Text) || string.IsNullOrEmpty(hasRented.Text))
             {
                 MessageBox.Show("Impossible d'ajouter un Client car vous n'avez pas remplis tous les champs");
             }
             else if (verify != null)
             {
                 MessageBox.Show("Un client possède déjà un compte avec cet adresse mail. Impossible de créer ce client.");
-            }
-            else if (!birthDate.Text.Contains("-"))
-            {
-                MessageBox.Show("Remplissez le champ 'Date anniversaire' avec la bonne syntaxe");
             }
             else if (!mailAdress.Text.Contains('@'))
             {
@@ -71,7 +66,7 @@ namespace Boat_Rental
                 {
                     Convert.ToBoolean(boatLicense.Text);
                 }
-                Customer customer = new Customer(firstName.Text, lastName.Text, DateTime.Parse(birthDate.Text), mailAdress.Text, Adress.Text, Convert.ToBoolean(boatLicense.Text), Convert.ToBoolean(hasRented));
+                Customer customer = new Customer(firstName.Text, lastName.Text, DateTime.Parse(date_naissance.Text), mailAdress.Text, Convert.ToBoolean(boatLicense.Text), Convert.ToBoolean(hasRented));
                 CustomerManager.AddACustomer(customer);
                 MessageBox.Show("Client ajouté !");
                 LoadChallenge();
@@ -98,9 +93,7 @@ namespace Boat_Rental
             {
                 firstName.Text = SelectedCustomer.FirstNameCustomer;
                 lastName.Text = SelectedCustomer.LastNameCustomer;
-                birthDate.Text = SelectedCustomer.AgeCustomer.ToString();
                 mailAdress.Text = SelectedCustomer.MailCustomer;
-                Adress.Text = SelectedCustomer.AdressCustomer;
                 boatLicense.Text = SelectedCustomer.BoatLicenseCustomer.ToString();
                 hasRented.Text = SelectedCustomer.HasRentedCustomer.ToString();
             }
@@ -110,6 +103,52 @@ namespace Boat_Rental
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
                 LoadChallenge();
+        }
+
+        private void list_customer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormCustomer_Load(object sender, EventArgs e)
+        {
+            list_customer.Columns.Clear();
+            list_customer.Columns.Add(new ColumnHeader() { Name = "ID", Text = "ID", Width = 10 });
+            list_customer.Columns.Add(new ColumnHeader() { Name = "Prenom", Text = "Prenom", Width = 30 });
+            list_customer.Columns.Add(new ColumnHeader() { Name = "Nom", Text = "Nom", Width = 30 });
+            list_customer.Columns.Add(new ColumnHeader() { Name = "Age", Text = "Age", Width = 30 });
+            list_customer.Columns.Add(new ColumnHeader() { Name = "Email", Text = "Email", Width = 30 });
+            list_customer.Columns.Add(new ColumnHeader() { Name = "License", Text = "License bateau", Width = 10 });
+            list_customer.Columns.Add(new ColumnHeader() { Name = "Caution", Text = "Caution", Width = 10 });
+
+            list_customer.Items.Clear();
+
+            foreach (Customer customer in CustomerManager.GetCustomers())
+            {
+                ListViewItem lvi = new ListViewItem(new string[]
+                    {
+                        customer.IdCustomer.ToString(),
+                        customer.FirstNameCustomer.ToString(),
+                        customer.LastNameCustomer.ToString(),
+                        customer.AgeCustomer.ToString(),
+                        customer.MailCustomer.ToString(),
+                        customer.BoatLicenseCustomer.ToString(),
+                        customer.HasRentedCustomer.ToString()
+                    });
+                lvi.Tag = customer;
+                list_customer.Items.Add(lvi);
+            }
+        }
+        private void list_member_DoubleClick(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection selected = list_customer.SelectedItems;
+            if (selected.Count == 1)
+            {
+                customer = selected[0].Tag as Customer;
+
+                firstName.Text = customer.FirstNameCustomer;
+                lastName.Text = customer.LastNameCustomer;
+            }
         }
     }
 }

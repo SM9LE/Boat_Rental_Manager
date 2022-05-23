@@ -36,7 +36,6 @@ namespace Boat_Rental
             this.button_Reset = new System.Windows.Forms.Button();
             this.button_Delete = new System.Windows.Forms.Button();
             this.button_Update = new System.Windows.Forms.Button();
-            this.birthDate = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,8 +46,6 @@ namespace Boat_Rental
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.mailAdress = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.Adress = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.boatLicense = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -56,6 +53,8 @@ namespace Boat_Rental
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.licenseChecked = new System.Windows.Forms.CheckBox();
             this.rentChecked = new System.Windows.Forms.CheckBox();
+            this.date_naissance = new System.Windows.Forms.DateTimePicker();
+            this.list_customer = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -119,15 +118,6 @@ namespace Boat_Rental
             this.button_Update.TabIndex = 60;
             this.button_Update.Text = "Modifier un client";
             this.button_Update.UseVisualStyleBackColor = true;
-            // 
-            // birthDate
-            // 
-            this.birthDate.Location = new System.Drawing.Point(187, 190);
-            this.birthDate.Multiline = true;
-            this.birthDate.Name = "birthDate";
-            this.birthDate.PlaceholderText = "01-02-2004";
-            this.birthDate.Size = new System.Drawing.Size(218, 23);
-            this.birthDate.TabIndex = 59;
             // 
             // label5
             // 
@@ -217,7 +207,7 @@ namespace Boat_Rental
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.SystemColors.Control;
-            this.label6.Location = new System.Drawing.Point(53, 227);
+            this.label6.Location = new System.Drawing.Point(53, 232);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(104, 23);
             this.label6.TabIndex = 66;
@@ -225,32 +215,12 @@ namespace Boat_Rental
             // 
             // mailAdress
             // 
-            this.mailAdress.Location = new System.Drawing.Point(187, 230);
+            this.mailAdress.Location = new System.Drawing.Point(187, 233);
             this.mailAdress.Multiline = true;
             this.mailAdress.Name = "mailAdress";
             this.mailAdress.PlaceholderText = "elon.musk@tesla.com";
             this.mailAdress.Size = new System.Drawing.Size(218, 23);
             this.mailAdress.TabIndex = 67;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.ForeColor = System.Drawing.SystemColors.Control;
-            this.label7.Location = new System.Drawing.Point(25, 272);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(156, 23);
-            this.label7.TabIndex = 68;
-            this.label7.Text = "Adresse de domicile";
-            // 
-            // Adress
-            // 
-            this.Adress.Location = new System.Drawing.Point(187, 272);
-            this.Adress.Multiline = true;
-            this.Adress.Name = "Adress";
-            this.Adress.PlaceholderText = "17 St George Russell, California";
-            this.Adress.Size = new System.Drawing.Size(218, 23);
-            this.Adress.TabIndex = 69;
             // 
             // label8
             // 
@@ -320,12 +290,37 @@ namespace Boat_Rental
             this.rentChecked.TabIndex = 76;
             this.rentChecked.UseVisualStyleBackColor = true;
             // 
+            // date_naissance
+            // 
+            this.date_naissance.CustomFormat = "dd-MM-yyyy";
+            this.date_naissance.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.date_naissance.Location = new System.Drawing.Point(187, 190);
+            this.date_naissance.Name = "date_naissance";
+            this.date_naissance.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.date_naissance.Size = new System.Drawing.Size(218, 23);
+            this.date_naissance.TabIndex = 77;
+            this.date_naissance.Value = new System.DateTime(2022, 5, 22, 0, 0, 0, 0);
+            // 
+            // list_customer
+            // 
+            this.list_customer.FullRowSelect = true;
+            this.list_customer.GridLines = true;
+            this.list_customer.HideSelection = false;
+            this.list_customer.Location = new System.Drawing.Point(204, 392);
+            this.list_customer.Name = "list_customer";
+            this.list_customer.Size = new System.Drawing.Size(546, 368);
+            this.list_customer.TabIndex = 78;
+            this.list_customer.UseCompatibleStateImageBehavior = false;
+            this.list_customer.View = System.Windows.Forms.View.Details;
+            // 
             // FormCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(1055, 549);
+            this.Controls.Add(this.list_customer);
+            this.Controls.Add(this.date_naissance);
             this.Controls.Add(this.rentChecked);
             this.Controls.Add(this.licenseChecked);
             this.Controls.Add(this.pictureBox1);
@@ -333,8 +328,6 @@ namespace Boat_Rental
             this.Controls.Add(this.label9);
             this.Controls.Add(this.boatLicense);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.Adress);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.mailAdress);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBox1);
@@ -343,7 +336,6 @@ namespace Boat_Rental
             this.Controls.Add(this.button_Reset);
             this.Controls.Add(this.button_Delete);
             this.Controls.Add(this.button_Update);
-            this.Controls.Add(this.birthDate);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
@@ -369,7 +361,6 @@ namespace Boat_Rental
         private System.Windows.Forms.Button button_Reset;
         private System.Windows.Forms.Button button_Delete;
         private System.Windows.Forms.Button button_Update;
-        private System.Windows.Forms.TextBox birthDate;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
@@ -390,5 +381,7 @@ namespace Boat_Rental
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.CheckBox licenseChecked;
         private System.Windows.Forms.CheckBox rentChecked;
+        private System.Windows.Forms.DateTimePicker date_naissance;
+        private System.Windows.Forms.ListView list_customer;
     }
 }

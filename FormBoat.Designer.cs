@@ -36,6 +36,7 @@ namespace Boat_Rental
             this.label4 = new System.Windows.Forms.Label();
             this.memberList = new System.Windows.Forms.ListBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lvBoat = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,6 +48,7 @@ namespace Boat_Rental
             this.button_Leave.TabIndex = 65;
             this.button_Leave.Text = "Quitter";
             this.button_Leave.UseVisualStyleBackColor = true;
+            this.button_Leave.Click += new System.EventHandler(this.button_Leave_Click);
             // 
             // pictureBox2
             // 
@@ -98,12 +100,26 @@ namespace Boat_Rental
             this.listBox1.Size = new System.Drawing.Size(240, 289);
             this.listBox1.TabIndex = 67;
             // 
+            // lvBoat
+            // 
+            this.lvBoat.FullRowSelect = true;
+            this.lvBoat.GridLines = true;
+            this.lvBoat.HideSelection = false;
+            this.lvBoat.Location = new System.Drawing.Point(149, 131);
+            this.lvBoat.Name = "lvBoat";
+            this.lvBoat.Size = new System.Drawing.Size(699, 328);
+            this.lvBoat.TabIndex = 68;
+            this.lvBoat.UseCompatibleStateImageBehavior = false;
+            this.lvBoat.View = System.Windows.Forms.View.Details;
+            this.lvBoat.SelectedIndexChanged += new System.EventHandler(this.lvBoat_SelectedIndexChanged);
+            // 
             // FormBoat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(994, 564);
+            this.Controls.Add(this.lvBoat);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.memberList);
             this.Controls.Add(this.button_Leave);
@@ -112,6 +128,7 @@ namespace Boat_Rental
             this.Controls.Add(this.label4);
             this.Name = "FormBoat";
             this.Text = "FormBoat";
+            this.Load += new System.EventHandler(this.FormBoat_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -126,5 +143,6 @@ namespace Boat_Rental
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox memberList;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListView lvBoat;
     }
 }

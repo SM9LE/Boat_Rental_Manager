@@ -16,7 +16,7 @@ namespace Boat_Rental.Models
         public string LicenseBoat { get; set; }
         public int SlotBoat { get; set; }
         public string DescriptionBoat { get; set; }
-        public bool IsRentedBoat { get; set; }
+        public bool IsRentedBoat { get; set;}
         public bool IsEmptyFuelBoat { get; set; }
         public int IdBoatType { get; set; }
 
