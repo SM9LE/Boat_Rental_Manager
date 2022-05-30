@@ -72,10 +72,19 @@ namespace Boat_Rental.Manager
         public Boat FindABoatByLicense(string license)
             => Context.Boats.FirstOrDefault(boat => boat.LicenseBoat == license);
 
+        public List<Boat> FindBoatStartByLicense(string license)
+            => Context.Boats.Where(boat => boat.LicenseBoat.StartsWith(license)).ToList();
+
         public List<Boat> ListBoat()
+            => Context.Boats.ToList();
+
+ 
+     public List<Boat> top5(string boat)
         {
             var list = Context.Boats.AsQueryable();
+            list = list.OrderByDescending(boat => boat.NameBoat).Where(b => b.IsRentedBoat == true).Take(5);
             return list.ToList();
         }
+  
     }
 }

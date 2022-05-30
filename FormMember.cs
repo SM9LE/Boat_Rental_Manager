@@ -13,153 +13,18 @@ namespace Boat_Rental
 {
     public partial class FormMember : Form
     {
-        public bool customerList = false;
         MemberManager MemberManager;
         private Member member;
+
         public FormMember()
         {
             InitializeComponent();
             MemberManager = new MemberManager();
-            //LoadChallenge();
-            comboBox1.SelectedIndex = 0;
-        }
-        private void button_Add_Click(object sender, EventArgs e)
-        {
-            Member verify = MemberManager.FindAMemberByLogin(login.Text);
-
-            if (string.IsNullOrEmpty(login.Text) || string.IsNullOrEmpty(password.Text))
-            {
-                MessageBox.Show("Impossible d'ajouter un Administrateur car vous n'avez pas remplis tous les champs");
-            }
-            else if (verify != null)
-            {
-                MessageBox.Show("Vous ne pouvez créer deux administrateurs avec le même login.");
-            }
-            else if (password.Text != confirmPassword.Text)
-            {
-                MessageBox.Show("Les champs de mot de passe sont différents.");
-            }
-            else
-            {
-                Member member = new Member(login.Text, password.Text);
-                MemberManager.AddAMember(member);
-                MessageBox.Show("Administrateur ajouté !");
-               // LoadChallenge();
-            }
-        }
-      /*  private void LoadChallenge()
-        {
-            memberList.Items.Clear();
-
-            switch (comboBox1.SelectedIndex)
-            {
-                case 0:
-                    memberList.Items.AddRange(MemberManager.GetMember().Select(member => member.LoginMember).ToArray());
-                    break;
-                case 1:
-                    memberList.Items.AddRange(MemberManager.GetMember().Select(member => member.PasswordMember).ToArray());
-                    break;
-                case 2:
-                    memberList.Items.AddRange(MemberManager.GetMember().Select(member => member.IdMember.ToString()).ToArray());
-                    break;
-            }
-        }*/
-
-        private Member SelectedMember;
-
-        private void memberList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (memberList.SelectedItem != null)
-            {
-                var split = memberList.SelectedItem.ToString().Split(':');
-                switch (comboBox1.SelectedIndex)
-                {
-                    case 0:
-                        SelectedMember = MemberManager.FindAMemberByLogin(memberList.SelectedItem.ToString());
-                        break;
-                    case 1:
-
-                        break;
-                    case 2:
-                        SelectedMember = MemberManager.FindAMemberByID(int.Parse(memberList.SelectedItem.ToString()));
-                        break;
-                }
-
-                if (SelectedMember != null)
-                {
-                    login.Text = SelectedMember.LoginMember;
-                    password.Text = SelectedMember.PasswordMember;
-                    confirmPassword.Text = SelectedMember.PasswordMember;
-                }
-                else
-                {
-                    return;
-                }
-            }
-            else
-            {
-                return;
-            }
         }
 
-        private void button_Update_Click(object sender, EventArgs e)
-        {
-            if (memberList.SelectedItem != null)
-            {
-                if (login.Text != SelectedMember.LoginMember)
-                {
-                    MessageBox.Show("Vous ne pouvez pas changer le nom d'utilisateur de cet administrateur.");
-                }
-                else if (password.Text != confirmPassword.Text)
-                {
-                    MessageBox.Show("Les champs de mot de passe sont différents.");
-                }
-                else
-                {
-                    SelectedMember.PasswordMember = password.Text;
-                    MemberManager.EditAMember(SelectedMember);
-                    login.Text = "";
-                    password.Text = "";
-                    confirmPassword.Text = "";
-                    //LoadChallenge();
-                    MessageBox.Show("Administrateur modifié !");
-                }
-            }
-        }
+        // Fonction permettant de rafraichir la listview à chaque requête
 
-        private void button_Delete_Click(object sender, EventArgs e)
-        {
-            if (memberList.SelectedItem != null)
-            {
-                MemberManager.DeleteAMember(SelectedMember);
-                login.Text = "";
-                password.Text = "";
-                confirmPassword.Text = "";
-               // LoadChallenge();
-                MessageBox.Show("Administrateur supprimé !");
-            }
-        }
-
-        private void button_Reset_Click(object sender, EventArgs e)
-        {
-            login.Text = "";
-            password.Text = "";
-            confirmPassword.Text = "";
-            //LoadChallenge();
-        }
-
-        // Lorsque l'utilisateur change le type de recherche
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           // LoadChallenge();
-        }
-
-        private void list_member_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormMember_Load(object sender, EventArgs e)
+        private void Refresh()
         {
             list_member.Columns.Clear();
             list_member.Columns.Add(new ColumnHeader() { Name = "ID", Text = "ID", Width = 150 });
@@ -179,7 +44,19 @@ namespace Boat_Rental
                 lvi.Tag = member;
                 list_member.Items.Add(lvi);
             }
+            login.Text = "";
+            password.Text = "";
+            confirmPassword.Text = "";
         }
+
+        // Charge la listview au démarrage
+
+        private void FormMember_Load(object sender, EventArgs e)
+        {
+            Refresh();
+        }
+
+        // Récupération du login et du mdp de l'utilisateur double cliqué sur la listview
 
         private void list_member_DoubleClick(object sender, EventArgs e)
         {
@@ -190,7 +67,98 @@ namespace Boat_Rental
 
                 login.Text = member.LoginMember;
                 password.Text = member.PasswordMember;
+                confirmPassword.Text = member.PasswordMember;
             }
+        }
+
+        // Bouton d'ajout d'un administrateur
+
+        private void button_Add_Click(object sender, EventArgs e)
+        {
+            Member verify = MemberManager.FindAMemberByLogin(login.Text);
+
+            if (string.IsNullOrEmpty(login.Text) || string.IsNullOrEmpty(password.Text))
+            {
+                MessageBox.Show("Impossible d'ajouter un administrateur car vous n'avez pas remplis tous les champs");
+            }
+            else if (verify != null)
+            {
+                MessageBox.Show("Vous ne pouvez pas créer deux administrateurs avec le même login.");
+            }
+            else if (password.Text != confirmPassword.Text)
+            {
+                MessageBox.Show("Les champs de mot de passe sont différents.");
+            }
+            else
+            {
+                Member member = new Member(login.Text, password.Text);
+                MemberManager.AddAMember(member);
+                MessageBox.Show("Administrateur ajouté !");
+                Refresh();
+            }
+        }
+
+        // Bouton de suppression d'un administrateur
+
+        private void button_Delete_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection selected = list_member.SelectedItems;
+            if (selected.Count == 1)
+            {
+                member = selected[0].Tag as Member;
+                MemberManager.DeleteAMember(member);
+                MessageBox.Show("Administrateur supprimé");
+                login.Text = "";
+                password.Text = "";
+                confirmPassword.Text = "";
+                Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Impossible de supprimer l'administrateur");
+            }
+        }
+
+        // Bouton permettant la modification d'un administrateur
+
+        private void button_Update_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection selected = list_member.SelectedItems;
+            if (selected.Count == 1)
+            {
+                if (login.Text != member.LoginMember)
+                {
+                    MessageBox.Show("Vous ne pouvez pas changer le login de l'administrateur.");
+                }
+                else if (password.Text != confirmPassword.Text)
+                {
+                    MessageBox.Show("Les mots de passes sont différents.");
+                }
+                else
+                {
+                    member.PasswordMember = password.Text.ToString();
+                    MemberManager.EditAMember(member);
+                    MessageBox.Show("Administrateur modifié.");
+                }
+                Refresh();
+            }
+        }
+
+        // Bouton permettant de réinitialiser les textbox
+
+        private void button_Reset_Click(object sender, EventArgs e)
+        {
+            login.Text = "";
+            password.Text = "";
+            confirmPassword.Text = "";
+            Refresh();
+        }
+
+        // Bouton permettant de quitter la page
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

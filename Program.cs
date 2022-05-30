@@ -17,30 +17,30 @@ namespace Boat_Rental
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            // Initialisation des différents formulaires
+
             Form1 form = new Form1();
             FormManager manager = new FormManager();
             FormManagerUser managerUser = new FormManagerUser();
-            FormMember member = new FormMember();
-            FormBoat boat = new FormBoat();
-            FormCustomer customer = new FormCustomer();
+
             Application.Run(form);
 
+            // Si c'est un super-admin, lance le menu avec toutes les options
             if (form.SuperAdmin)
+            {
                 Application.Run(manager);
-            if (form.Authentified)
+            }
+            // Sinon si c'est un admin, lance le menu avec moins d'options
+            else if (form.Authentified)
+            {
                 Application.Run(managerUser);
-            if (manager.AddMember)
-                Application.Run(member);
-            if (manager.AddBoat)
-                Application.Run(boat);
-            if (manager.AddCustomer)
-                Application.Run(customer);
-            if (manager.AddCommand)
-                Application.Run();
-            if (manager.CustomerList)
-                Application.Run();
-            if (manager.CommandList)
-                Application.Run();
+            }
+            // Sinon rien
+            else
+            {
+                return;
+            }
         }
     }
 }

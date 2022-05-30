@@ -14,8 +14,9 @@ namespace Boat_Rental
         public bool AddBoat = false;
         public bool AddCustomer = false;
         public bool AddCommand = false;
-        public bool CustomerList = false;
+        public bool CustomersList = false;
         public bool CommandList = false;
+        public bool BoatList = false;
 
         public FormManager()
         {
@@ -28,36 +29,44 @@ namespace Boat_Rental
             member.ShowDialog();
         }
 
-        private void button_BoatStock_Click(object sender, EventArgs e)
+        private void button_BoatStock_Click(object sender, EventArgs e) 
         {
             AddBoat = true;
-            FormBoat boatStock = new FormBoat();
-            boatStock.ShowDialog();
-            
+            FormBoat boat = new FormBoat();
+            boat.ShowDialog();
         }
 
         private void button_AddConsumer_Click(object sender, EventArgs e)
         {
             AddCustomer = true;
-            Close();
+            FormCustomer customer = new FormCustomer();
+            customer.ShowDialog();
         }
 
         private void button_AddCommand_Click(object sender, EventArgs e)
         {
             AddCommand = true;
-            Close();
+            FormCommand commands = new FormCommand();
+            commands.ShowDialog();
         }
         private void button_CustomerList_Click(object sender, EventArgs e)
         {
-            CustomerList = true;
-            Close();
+            CustomersList = true;
+            FormListCustomers listcustomers = new FormListCustomers();
+            listcustomers.ShowDialog();
         }
         private void button_CommandList_Click(object sender, EventArgs e)
         {
             CommandList = true;
-            Close();
+            FormListCommands listcommands = new FormListCommands();
+            listcommands.ShowDialog();
         }
-
+        private void boatLists_Click(object sender, EventArgs e)
+        {
+            BoatList = true;
+            FormListBoats boatStock = new FormListBoats();
+            boatStock.ShowDialog();
+        }
         private void button_Leave_Click(object sender, EventArgs e)
         {
             Close();

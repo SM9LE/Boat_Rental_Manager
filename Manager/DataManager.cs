@@ -1,4 +1,6 @@
 ﻿using Boat_Rental.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Proxies;
 
 namespace Boat_Rental.Manager
 {
@@ -8,7 +10,8 @@ namespace Boat_Rental.Manager
 
         public DataManager()
         {
-            Context = new Boat_RentalContext();
+            var test = new DbContextOptionsBuilder<Boat_RentalContext>().UseLazyLoadingProxies();
+            Context = new Boat_RentalContext(test.Options);
         }
     }
 }

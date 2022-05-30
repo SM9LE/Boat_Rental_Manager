@@ -89,7 +89,7 @@ namespace Boat_Rental
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(-8, -8);
+            this.pictureBox2.Location = new System.Drawing.Point(-8, -13);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(86, 84);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -101,7 +101,7 @@ namespace Boat_Rental
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Sitka Text", 16.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(741, 105);
+            this.label1.Location = new System.Drawing.Point(728, 105);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(162, 32);
             this.label1.TabIndex = 55;
@@ -133,7 +133,7 @@ namespace Boat_Rental
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label4);
             this.Name = "FormManagerUser";
-            this.Text = "FormManagerUser";
+            this.Text = "Menu principal administrateur";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

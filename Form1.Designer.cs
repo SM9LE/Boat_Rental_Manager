@@ -150,7 +150,7 @@ namespace Boat_Rental
             this.Controls.Add(this.label1);
             this.Controls.Add(this.username);
             this.Name = "Form1";
-            this.Text = "Gestionnaire de Location des Flots Bleus";
+            this.Text = "Gestionnaire de locations des Flots Bleus";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

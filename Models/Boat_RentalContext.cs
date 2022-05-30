@@ -15,6 +15,7 @@ namespace Boat_Rental.Models
         public Boat_RentalContext(DbContextOptions<Boat_RentalContext> options)
             : base(options)
         {
+
         }
 
         public virtual DbSet<Boat> Boats { get; set; }
@@ -55,11 +56,14 @@ namespace Boat_Rental.Models
                     .HasMaxLength(100)
                     .HasColumnName("Description_Boat");
 
+                entity.Property(e => e.PriceBoat)
+                .HasColumnType("double")
+                .HasColumnName("Price_Boat");
+
                 entity.Property(e => e.IdBoatType)
                     .HasColumnType("int(11)")
                     .HasColumnName("Id_BoatType");
 
-                entity.Property(e => e.IsEmptyFuelBoat).HasColumnName("IsEmptyFuel_Boat");
 
                 entity.Property(e => e.IsRentedBoat).HasColumnName("IsRented_Boat");
 
@@ -124,8 +128,6 @@ namespace Boat_Rental.Models
                     .HasColumnType("datetime")
                     .HasColumnName("DateStart_Command");
 
-                entity.Property(e => e.HasPaiedCommand).HasColumnName("HasPaied_Command");
-
                 entity.Property(e => e.HasPaiedDepositCommand).HasColumnName("HasPaiedDeposit_Command");
 
                 entity.Property(e => e.IdBoat)
@@ -136,9 +138,6 @@ namespace Boat_Rental.Models
                     .HasColumnType("int(11)")
                     .HasColumnName("Id_Customer");
 
-                entity.Property(e => e.IsReadyCommand).HasColumnName("IsReady_Command");
-
-                entity.Property(e => e.PriceCommand).HasColumnName("Price_Command");
 
                 entity.HasOne(d => d.IdBoatNavigation)
                     .WithMany(p => p.Commands)
