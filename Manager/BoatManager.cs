@@ -10,28 +10,6 @@ namespace Boat_Rental.Manager
 {
     public class BoatManager : DataManager
     {
-        public Timer timer;
-
-
-        public void InitializeTimer()
-        {
-
-            timer = new Timer(60000);
-            timer.Elapsed += CheckBoatRent;
-            timer.Start();
-        }
-
-        private void CheckBoatRent(object sender, ElapsedEventArgs e)
-        {
-            foreach(var commandBoat in ListBoat().SelectMany(x => x.Commands))
-            {
-                if(commandBoat.DateEndCommand <= DateTime.Now)
-                    commandBoat.IdBoatNavigation.IsRentedBoat = false;
-
-                Context.Update(commandBoat.IdBoatNavigation);
-            }
-        }
-
         public Boat AddABoat(Boat boat)
         {
             Context.Boats.Add(boat);
@@ -64,11 +42,16 @@ namespace Boat_Rental.Manager
         {
             return Context.Boats.Find(id);
         }
-        /*  public Boat FindABoatByRent(bool rent)
+
+        /* 
+          Trouver les bateaux qui sont en location
+        
+          public Boat FindABoatByRent(bool rent)
           {
-              Context.Boats.Where(boat => boat.IsRentedBoat == rent);
+              Context.Boats.Where(boat => boat.IsRentedBoat.checked);
           }
         */
+
         public Boat FindABoatByLicense(string license)
             => Context.Boats.FirstOrDefault(boat => boat.LicenseBoat == license);
 
@@ -78,13 +61,24 @@ namespace Boat_Rental.Manager
         public List<Boat> ListBoat()
             => Context.Boats.ToList();
 
- 
-     public List<Boat> top5(string boat)
+        public List<Boattype> ListBoatType()
+            => Context.Boattypes.ToList();
+
+        public List<Boat> top5RentedBoat()
         {
             var list = Context.Boats.AsQueryable();
             list = list.OrderByDescending(boat => boat.NameBoat).Where(b => b.IsRentedBoat == true).Take(5);
             return list.ToList();
         }
-  
+
+        /* Top 3 des bateaux les plus chers*/
+         
+        public List<Boat> top3HighestPrice()
+        {
+            var list = Context.Boats.AsQueryable();
+            list = list.OrderByDescending(boat => boat.PriceBoat).Take(3);
+            return list.ToList();
+        }
+        
     }
 }

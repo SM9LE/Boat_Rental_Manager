@@ -145,7 +145,7 @@ namespace Boat_Rental
             // 
             // button_Update
             // 
-            this.button_Update.Location = new System.Drawing.Point(70, 424);
+            this.button_Update.Location = new System.Drawing.Point(70, 414);
             this.button_Update.Name = "button_Update";
             this.button_Update.Size = new System.Drawing.Size(173, 41);
             this.button_Update.TabIndex = 45;

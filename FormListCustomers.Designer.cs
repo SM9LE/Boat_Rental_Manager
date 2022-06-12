@@ -89,6 +89,7 @@ namespace Boat_Rental
             this.searchBar_customer.Name = "searchBar_customer";
             this.searchBar_customer.Size = new System.Drawing.Size(274, 23);
             this.searchBar_customer.TabIndex = 83;
+            this.searchBar_customer.TextChanged += new System.EventHandler(this.searchBar_customer_TextChanged);
             // 
             // searchButton_customers
             // 
@@ -110,6 +111,7 @@ namespace Boat_Rental
             this.searchBar_laabel.Size = new System.Drawing.Size(183, 23);
             this.searchBar_laabel.TabIndex = 81;
             this.searchBar_laabel.Text = "Rechercher par client :";
+            this.searchBar_laabel.Click += new System.EventHandler(this.searchBar_laabel_Click);
             // 
             // FormListCustomers
             // 

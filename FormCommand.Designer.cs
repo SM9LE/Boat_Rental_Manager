@@ -56,6 +56,7 @@ namespace Boat_Rental
             this.listeNom = new System.Windows.Forms.ComboBox();
             this.boolPaied = new System.Windows.Forms.CheckBox();
             this.montantTTC_text = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -240,7 +241,7 @@ namespace Boat_Rental
             this.dateDeb.Name = "dateDeb";
             this.dateDeb.Size = new System.Drawing.Size(148, 23);
             this.dateDeb.TabIndex = 74;
-            this.dateDeb.Value = new System.DateTime(2022, 5, 30, 0, 0, 0, 0);
+            this.dateDeb.Value = new System.DateTime(2022, 3, 25, 0, 0, 0, 0);
             // 
             // listeIdentifiant
             // 
@@ -270,7 +271,8 @@ namespace Boat_Rental
             this.dateFin.Name = "dateFin";
             this.dateFin.Size = new System.Drawing.Size(148, 23);
             this.dateFin.TabIndex = 78;
-            this.dateFin.Value = new System.DateTime(2022, 5, 30, 0, 0, 0, 0);
+            this.dateFin.Value = new System.DateTime(2022, 3, 25, 0, 0, 0, 0);
+            this.dateFin.ValueChanged += new System.EventHandler(this.dateFin_ValueChanged);
             // 
             // priceBoat
             // 
@@ -323,10 +325,21 @@ namespace Boat_Rental
             // 
             // montantTTC_text
             // 
-            this.montantTTC_text.Location = new System.Drawing.Point(475, 437);
+            this.montantTTC_text.Location = new System.Drawing.Point(521, 437);
             this.montantTTC_text.Name = "montantTTC_text";
             this.montantTTC_text.Size = new System.Drawing.Size(100, 23);
             this.montantTTC_text.TabIndex = 87;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.SystemColors.Control;
+            this.label6.Location = new System.Drawing.Point(453, 437);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(51, 23);
+            this.label6.TabIndex = 88;
+            this.label6.Text = "TTC :";
             // 
             // FormCommand
             // 
@@ -334,6 +347,7 @@ namespace Boat_Rental
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(1503, 597);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.montantTTC_text);
             this.Controls.Add(this.boolPaied);
             this.Controls.Add(this.listeNom);
@@ -397,5 +411,6 @@ namespace Boat_Rental
         private System.Windows.Forms.ComboBox listeNom;
         private System.Windows.Forms.CheckBox boolPaied;
         private System.Windows.Forms.TextBox montantTTC_text;
+        private System.Windows.Forms.Label label6;
     }
 }

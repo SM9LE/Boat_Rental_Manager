@@ -42,6 +42,7 @@ namespace Boat_Rental
             this.button_AddCommand = new System.Windows.Forms.Button();
             this.button_Leave = new System.Windows.Forms.Button();
             this.boatLists = new System.Windows.Forms.Button();
+            this.button_AddBoatType = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -90,7 +91,7 @@ namespace Boat_Rental
             // 
             // button_AdminAccount
             // 
-            this.button_AdminAccount.Location = new System.Drawing.Point(153, 193);
+            this.button_AdminAccount.Location = new System.Drawing.Point(154, 174);
             this.button_AdminAccount.Name = "button_AdminAccount";
             this.button_AdminAccount.Size = new System.Drawing.Size(248, 31);
             this.button_AdminAccount.TabIndex = 47;
@@ -100,7 +101,7 @@ namespace Boat_Rental
             // 
             // button_BoatStock
             // 
-            this.button_BoatStock.Location = new System.Drawing.Point(153, 257);
+            this.button_BoatStock.Location = new System.Drawing.Point(154, 238);
             this.button_BoatStock.Name = "button_BoatStock";
             this.button_BoatStock.Size = new System.Drawing.Size(248, 31);
             this.button_BoatStock.TabIndex = 48;
@@ -130,7 +131,7 @@ namespace Boat_Rental
             // 
             // button_AddConsumer
             // 
-            this.button_AddConsumer.Location = new System.Drawing.Point(153, 321);
+            this.button_AddConsumer.Location = new System.Drawing.Point(154, 302);
             this.button_AddConsumer.Name = "button_AddConsumer";
             this.button_AddConsumer.Size = new System.Drawing.Size(248, 31);
             this.button_AddConsumer.TabIndex = 52;
@@ -140,7 +141,7 @@ namespace Boat_Rental
             // 
             // button_AddCommand
             // 
-            this.button_AddCommand.Location = new System.Drawing.Point(153, 384);
+            this.button_AddCommand.Location = new System.Drawing.Point(154, 365);
             this.button_AddCommand.Name = "button_AddCommand";
             this.button_AddCommand.Size = new System.Drawing.Size(248, 31);
             this.button_AddCommand.TabIndex = 53;
@@ -168,12 +169,23 @@ namespace Boat_Rental
             this.boatLists.UseVisualStyleBackColor = true;
             this.boatLists.Click += new System.EventHandler(this.boatLists_Click);
             // 
+            // button_AddBoatType
+            // 
+            this.button_AddBoatType.Location = new System.Drawing.Point(154, 423);
+            this.button_AddBoatType.Name = "button_AddBoatType";
+            this.button_AddBoatType.Size = new System.Drawing.Size(248, 31);
+            this.button_AddBoatType.TabIndex = 56;
+            this.button_AddBoatType.Text = "Gérer les types de bateaux";
+            this.button_AddBoatType.UseVisualStyleBackColor = true;
+            this.button_AddBoatType.Click += new System.EventHandler(this.button_AddBoatType_Click);
+            // 
             // FormManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(1084, 579);
+            this.Controls.Add(this.button_AddBoatType);
             this.Controls.Add(this.boatLists);
             this.Controls.Add(this.button_Leave);
             this.Controls.Add(this.button_AddCommand);
@@ -187,7 +199,7 @@ namespace Boat_Rental
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label4);
             this.Name = "FormManager";
-            this.Text = "Menu principal super-administrateur";
+            this.Text = "Menu principal";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -209,5 +221,6 @@ namespace Boat_Rental
         private System.Windows.Forms.Button button_AddCommand;
         private System.Windows.Forms.Button button_Leave;
         private System.Windows.Forms.Button boatLists;
+        private System.Windows.Forms.Button button_AddBoatType;
     }
 }

@@ -37,6 +37,7 @@ namespace Boat_Rental
             this.searchBar_boats = new System.Windows.Forms.TextBox();
             this.searchBar_label = new System.Windows.Forms.Label();
             this.searchButton = new System.Windows.Forms.Button();
+            this.topBoat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -111,12 +112,24 @@ namespace Boat_Rental
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
+            // topBoat
+            // 
+            this.topBoat.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.topBoat.Location = new System.Drawing.Point(244, 65);
+            this.topBoat.Name = "topBoat";
+            this.topBoat.Size = new System.Drawing.Size(75, 23);
+            this.topBoat.TabIndex = 75;
+            this.topBoat.Text = "TopBoat";
+            this.topBoat.UseVisualStyleBackColor = true;
+            this.topBoat.Click += new System.EventHandler(this.topBoat_Click);
+            // 
             // FormListBoats
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(1205, 576);
+            this.Controls.Add(this.topBoat);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.searchBar_label);
             this.Controls.Add(this.searchBar_boats);
@@ -142,5 +155,6 @@ namespace Boat_Rental
         private System.Windows.Forms.TextBox searchBar_boats;
         private System.Windows.Forms.Label searchBar_label;
         private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.Button topBoat;
     }
 }

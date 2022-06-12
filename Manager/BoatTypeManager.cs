@@ -43,5 +43,7 @@ namespace Boat_Rental.Manager
         }
         public Boattype FindABoatTypeByType(string type)
             => Context.Boattypes.FirstOrDefault(boattype => boattype.TypeBoatType == type);
+        public List<Boattype> ListBoattype()
+           => Context.Boattypes.ToList();
     }
 }

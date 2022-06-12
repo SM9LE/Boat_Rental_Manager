@@ -262,7 +262,7 @@ namespace Boat_Rental
             this.date_naissance.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.date_naissance.Size = new System.Drawing.Size(99, 23);
             this.date_naissance.TabIndex = 77;
-            this.date_naissance.Value = new System.DateTime(2022, 5, 22, 0, 0, 0, 0);
+            this.date_naissance.Value = new System.DateTime(2022, 3, 25, 0, 0, 0, 0);
             // 
             // list_customer
             // 

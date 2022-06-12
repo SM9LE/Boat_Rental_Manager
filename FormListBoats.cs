@@ -18,7 +18,6 @@ namespace Boat_Rental
         public FormListBoats()
         {
             boatManager = new BoatManager();
-            boatManager.InitializeTimer();
             InitializeComponent();
         }
 
@@ -31,6 +30,7 @@ namespace Boat_Rental
             lvBoat.Columns.Add(new ColumnHeader() { Name = "boat_license", Text = "License", Width = 100 });
             lvBoat.Columns.Add(new ColumnHeader() { Name = "boat_slot", Text = "Places", Width = 90 });
             lvBoat.Columns.Add(new ColumnHeader() { Name = "boat_description", Text = "Description", Width = 460 });
+            lvBoat.Columns.Add(new ColumnHeader() { Name = "boat_price", Text = "Prix", Width = 100 });
             lvBoat.Columns.Add(new ColumnHeader() { Name = "boat_isRented", Text = "Loue", Width = 120 });
             lvBoat.Columns.Add(new ColumnHeader() { Name = "boat_type", Text = "Type", Width = 150 });
 
@@ -45,8 +45,10 @@ namespace Boat_Rental
                     boat.LicenseBoat.ToString(),
                     boat.SlotBoat.ToString() + " places",
                     boat.DescriptionBoat.ToString(),
+                    boat.PriceBoat.ToString(),
                     boat.IsRentedBoat ? "Non disponible" : "Disponible",
                     boat.IdBoatTypeNavigation.TypeBoatType });
+
                 lvi.Tag = boat;
                 lvBoat.Items.Add(lvi);
             }
@@ -75,6 +77,11 @@ namespace Boat_Rental
 
             Refresh(boatManager.FindBoatStartByLicense(searchBar_boats.Text));
 
+        }
+
+        private void topBoat_Click(object sender, EventArgs e)
+        {
+            Refresh(boatManager.top3HighestPrice());
         }
     }
 }

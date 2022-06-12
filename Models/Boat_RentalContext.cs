@@ -64,7 +64,6 @@ namespace Boat_Rental.Models
                     .HasColumnType("int(11)")
                     .HasColumnName("Id_BoatType");
 
-
                 entity.Property(e => e.IsRentedBoat).HasColumnName("IsRented_Boat");
 
                 entity.Property(e => e.LicenseBoat)

@@ -15,6 +15,7 @@ namespace Boat_Rental
         public bool AddCustomer = false;
         public bool AddCommand = false;
         public bool CustomersList = false;
+        public bool BoatType = false;
         public bool CommandList = false;
         public bool BoatList = false;
 
@@ -70,6 +71,13 @@ namespace Boat_Rental
         private void button_Leave_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void button_AddBoatType_Click(object sender, EventArgs e)
+        {
+            BoatType = true;
+            FormBoatType boatType = new FormBoatType();
+            boatType.ShowDialog();
         }
     }
 }

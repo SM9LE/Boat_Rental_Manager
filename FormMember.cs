@@ -108,15 +108,14 @@ namespace Boat_Rental
                 member = selected[0].Tag as Member;
                 MemberManager.DeleteAMember(member);
                 MessageBox.Show("Administrateur supprimé");
-                login.Text = "";
-                password.Text = "";
-                confirmPassword.Text = "";
                 Refresh();
             }
             else
             {
                 MessageBox.Show("Impossible de supprimer l'administrateur");
             }
+            Refresh();
+
         }
 
         // Bouton permettant la modification d'un administrateur
@@ -148,9 +147,6 @@ namespace Boat_Rental
 
         private void button_Reset_Click(object sender, EventArgs e)
         {
-            login.Text = "";
-            password.Text = "";
-            confirmPassword.Text = "";
             Refresh();
         }
 

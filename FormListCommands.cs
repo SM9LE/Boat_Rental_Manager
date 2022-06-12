@@ -42,7 +42,7 @@ namespace Boat_Rental
                     command.IdCommand.ToString(),
                     command.DateStartCommand.ToString(),
                     command.DateEndCommand.ToString(),
-                    command.HasPaiedDepositCommand ? "Caution non payé" : "Caution payé",
+                    command.HasPaiedDepositCommand ? "Caution payé" : "Caution non payé",
                     command.IdBoatNavigation.PriceBoat*1.2 + "€",
                     command.IdCustomerNavigation.FirstNameCustomer + " " + command.IdCustomerNavigation.LastNameCustomer,
                     command.IdBoatNavigation.NameBoat.ToString() });
@@ -73,6 +73,11 @@ namespace Boat_Rental
             }
             // Utilisation de la nouvelle liste
             Refresh(commandManager.FindACommandByCustomerName(searchBar_commands.Text));
+        }
+
+        private void search_top1_Click(object sender, EventArgs e)
+        {
+            Refresh(commandManager.top1());
         }
     }
 }

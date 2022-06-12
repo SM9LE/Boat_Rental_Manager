@@ -30,7 +30,7 @@ namespace Boat_Rental
             lvListCustomers.Columns.Add(new ColumnHeader() { Name = "customer_Nom", Text = "Nom", Width = 150 });
             lvListCustomers.Columns.Add(new ColumnHeader() { Name = "customer_Age", Text = "Age", Width = 150 });
             lvListCustomers.Columns.Add(new ColumnHeader() { Name = "customer_email", Text = "Email", Width = 300 });
-            lvListCustomers.Columns.Add(new ColumnHeader() { Name = "customer_license", Text = "License bateau", Width = 200 });
+            lvListCustomers.Columns.Add(new ColumnHeader() { Name = "customer_license", Text = "Permis de conduire", Width = 200 });
             lvListCustomers.Columns.Add(new ColumnHeader() { Name = "customer_isrented", Text = "Location en cours ?", Width = 130 });
 
             lvListCustomers.Items.Clear();
@@ -44,7 +44,7 @@ namespace Boat_Rental
                         customer.LastNameCustomer.ToString(),
                         customer.AgeCustomer.ToString(),
                         customer.MailCustomer.ToString(),
-                        customer.BoatLicenseCustomer ? "Permis bateau" : "Ne possède pas le permis",
+                        customer.BoatLicenseCustomer ? "Permis B" : "Ne possède pas le permis",
                         customer.HasRentedCustomer ? "Oui" : "Non"
                     });
                 lvi.Tag = customer;
@@ -73,6 +73,16 @@ namespace Boat_Rental
                 return;
             }*/
             Refresh(CustomerManager.FindCustomersByRent());
+        }
+
+        private void searchBar_customer_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchBar_laabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -133,7 +133,7 @@ namespace Boat_Rental
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label4);
             this.Name = "FormManagerUser";
-            this.Text = "Menu principal administrateur";
+            this.Text = "Menu principal";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -28,7 +28,7 @@ namespace Boat_Rental
 
         // Fonction permettant de Refresh 
 
-        private void Refresh()
+        private void Refresh(List<Customer> list)
         {
             list_customer.Columns.Clear();
             list_customer.Columns.Add(new ColumnHeader() { Name = "customer_Id", Text = "Identifiant", Width = 50 });
@@ -41,7 +41,7 @@ namespace Boat_Rental
 
             list_customer.Items.Clear();
 
-            foreach (Customer customer in CustomerManager.GetCustomers())
+            foreach (Customer customer in list)
             {
                 ListViewItem lvi = new ListViewItem(new string[]
                     {
@@ -69,7 +69,7 @@ namespace Boat_Rental
 
         private void FormCustomer_Load_1(object sender, EventArgs e)
         {
-            Refresh();
+            Refresh(CustomerManager.GetCustomers());
         }
 
         // Lorsque l'utilisateur double clic, cela remplit les champs      
@@ -125,7 +125,7 @@ namespace Boat_Rental
                 Customer customer = new Customer(firstName.Text, lastName.Text, Convert.ToDateTime(date_naissance.Value.Date), mailAdress.Text, licenseChecked.Checked, rentChecked.Checked);
                 CustomerManager.AddACustomer(customer);
                 MessageBox.Show("Client ajouté.");
-                Refresh();
+                Refresh(CustomerManager.GetCustomers());
             }
         }
 
@@ -139,7 +139,7 @@ namespace Boat_Rental
                 customer = selected[0].Tag as Customer;
                 CustomerManager.DeleteACustomer(customer);
                 MessageBox.Show("Client supprimé.");
-                Refresh();
+                Refresh(CustomerManager.GetCustomers());
             }
             else
             {
@@ -154,15 +154,7 @@ namespace Boat_Rental
             ListView.SelectedListViewItemCollection selected = list_customer.SelectedItems;
             if (selected.Count == 1)
             {
-                if (firstName.Text != customer.FirstNameCustomer)
-                {
-                    MessageBox.Show("Vous ne pouvez pas changer le prénom du client.");
-                }
-                else if (customer.LastNameCustomer != lastName.Text)
-                {
-                    MessageBox.Show("Vous ne pouvez pas modifier le nom de famille du client.");
-                }
-                else if (date_naissance.Value.Date != customer.AgeCustomer)
+                if (date_naissance.Value.Date != customer.AgeCustomer)
                 {
                     MessageBox.Show("Vous ne pouvez pas modifier la date de naissance du client.");
                 }
@@ -172,13 +164,15 @@ namespace Boat_Rental
                 }
                 else
                 {
+                    customer.FirstNameCustomer = firstName.Text;
+                    customer.LastNameCustomer = lastName.Text;
                     customer.MailCustomer = mailAdress.Text;
                     customer.HasRentedCustomer = rentChecked.Checked;
                     customer.BoatLicenseCustomer = licenseChecked.Checked;
                     CustomerManager.EditACustomer(customer);
                     MessageBox.Show("Client modifié.");
                 }
-                Refresh();
+                Refresh(CustomerManager.GetCustomers());
             }
         }
 
@@ -186,7 +180,7 @@ namespace Boat_Rental
 
         private void button_Reset_Click(object sender, EventArgs e)
         {
-            Refresh();
+            Refresh(CustomerManager.GetCustomers());
         }
 
         // Bouton permettant de quitter la page
@@ -194,5 +188,7 @@ namespace Boat_Rental
         {
             Close();
         }
+
+//          Refresh(CustomerManager.FindNoPermis
     }
 }

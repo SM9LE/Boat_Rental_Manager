@@ -34,8 +34,22 @@ namespace Boat_Rental.Manager
         }
         public bool EditACustomer(Customer customer)
         {
-            Context.Entry(customer).State = EntityState.Modified;
-            return (Context.SaveChanges() > 0);
+            BoatManager boatManager = new BoatManager();
+            CommandManager commandManager = new CommandManager();
+
+            if (customer != null && commandManager != null && boatManager != null)
+            {
+                Command command = customer == null ? null : commandManager.FindACommandByCustomerId(customer.IdCustomer);
+                Boat boat = command == null ? null : boatManager.FindABoatByID(command.IdBoat);
+                if (!customer.HasRentedCustomer && boat !=  null)
+                {
+                    boat.IsRentedBoat = false;
+                    boatManager.EditABoat(boat);
+                }
+                Context.Entry(customer).State = EntityState.Modified;
+                return (Context.SaveChanges() > 0);
+            }
+            return false;
         }
 
         // Fonction permettant de trouver un client par son identifiant
@@ -63,5 +77,10 @@ namespace Boat_Rental.Manager
         // Fonction permettant de récupérer les clients ayant une location en cours
         public List<Customer> FindCustomersByRent()
             => Context.Customers.Where(customer => customer.HasRentedCustomer.Equals(true)).OrderByDescending(customer => customer.LastNameCustomer).ToList();
+
+
+        // Fonction qui permet de récupérer les clients ne possédant pas de permis bateau
+        public List<Customer> FindNoPermis()
+            => Context.Customers.Where(customer => customer.BoatLicenseCustomer.Equals(false)).ToList();
     }
 }
