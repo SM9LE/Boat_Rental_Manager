@@ -1,12 +1,19 @@
 On the application you have :
 
 Logs;
+
 Manage a boat type;
+
 Manage a boat;
+
 Manage a customer;
+
 Manage an order;
+
 Boat's list;
+
 Customer's list;
+
 Order's list.
 
 To launch the project, you have to use the DB "boat_rental" and to upload it on phpMyAdmin.
